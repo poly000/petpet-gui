@@ -45,6 +45,14 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v1
+        
+        
+      - name: Prepare Environment
+        shell: bash
+        run: |
+          if [[ ${{ matrix.target }} == x86_64-unknown-linux-gnu ]]
+          then apt-get install -y libgtk{3,4}-dev
+          fi
 
       - name: Run code build
         uses: actions-rs/cargo@v1
