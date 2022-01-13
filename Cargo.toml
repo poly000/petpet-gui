@@ -11,3 +11,6 @@ description = "GUI interface of petpet-rs"
 [dependencies]
 nfd2 = "0.3.0"
 petpet = {git = "https://github.com/poly000/petpet-rs", branch = "master"}
+
+[profile.release]
+opt-level = "z"
