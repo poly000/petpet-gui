@@ -10,7 +10,7 @@ description = "GUI interface of petpet-rs"
 
 [dependencies]
 nfd2 = "0.3.0"
-petpet = "2.1.1"
+petpet = { version = "2.3.2", features = ["more_format", "image"] }
 
 [profile.release]
 opt-level = "z"
