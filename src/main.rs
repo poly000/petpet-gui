@@ -1,17 +1,22 @@
 use petpet::{encode_gif, generate};
 use std::io::BufWriter;
-use std::path::PathBuf;
-use std::process::exit;
+use std::process;
 
-use nfd2::Response;
-use nfd2::{open_file_dialog, open_save_dialog};
+use rfd::FileDialog;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let input_file = open_file_dialog(Some("jpg,jpeg,png,ico,bmp,webp,tiff"), None)?;
-    let output_file = open_save_dialog(Some("gif"), None)?;
+    let input_file = FileDialog::new()
+        .add_filter(
+            "Origin Image",
+            &["jpg", "jpeg", "png", "ico", "bmp", "webp", "tiff"],
+        )
+        .pick_file()
+        .unwrap_or_else(|| process::exit(0));
 
-    let input_file = match_response(input_file);
-    let output_file = match_response(output_file);
+    let output_file = FileDialog::new()
+        .add_filter("", &["gif"])
+        .save_file()
+        .unwrap_or_else(|| process::exit(0));
 
     let output = std::fs::File::create(output_file)?;
 
@@ -25,12 +30,4 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     )?;
 
     Ok(())
-}
-
-fn match_response(r: Response) -> PathBuf {
-    match r {
-        Response::Okay(p) => p,
-        Response::Cancel => exit(0),
-        _ => panic!(),
-    }
 }
