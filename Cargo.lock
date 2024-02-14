@@ -9,6 +9,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f26201604c87b1e01bd3d98f8d5d9a8fcbb815e8cedb41ffccbeb4bf593a35fe"
 
 [[package]]
+name = "apng"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1830158ab39f587ae3f174b2ef1388d84ce194b4ee6ed3d0a6ce6077c1ee5a35"
+dependencies = [
+ "byteorder",
+ "flate2",
+ "image",
+ "png",
+ "thiserror",
+]
+
+[[package]]
 name = "atk-sys"
 version = "0.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -367,16 +380,18 @@ dependencies = [
 
 [[package]]
 name = "petpet"
-version = "2.3.2"
+version = "2.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cfe8d486244f2fe6b552873649e6a1f90e61082610ec6cc6d77622912f08e626"
+checksum = "7c698b42e2395d6c7ca375ae12061c365d09355bc8d2ccc595a7a8b999865583"
 dependencies = [
+ "apng",
  "image",
+ "png",
 ]
 
 [[package]]
 name = "petpet-gui"
-version = "1.0.1"
+version = "1.1.0"
 dependencies = [
  "petpet",
  "rfd",
@@ -518,6 +533,26 @@ name = "target-lexicon"
 version = "0.12.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "69758bda2e78f098e4ccb393021a0963bb3442eac05f135c30f61b7370bbafae"
+
+[[package]]
+name = "thiserror"
+version = "1.0.57"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1e45bcbe8ed29775f228095caf2cd67af7a4ccf756ebff23a306bf3e8b47b24b"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "1.0.57"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a953cb265bef375dae3de6663da4d3804eee9682ea80d8e2542529b73c531c81"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
 
 [[package]]
 name = "toml"
