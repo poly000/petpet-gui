@@ -71,7 +71,11 @@ jobs:
           fi
           
           tar -cvzf ${{ matrix.target }}.tar.gz LICENSE ${{ matrix.bin }}
-          
+
+      - name: Set pkgver variables
+        id: vars
+        shell: bash
+        run: |     
           petpet_ver=$(cargo metadata --format-version 1 --no-deps | sed -r 's/.*"version":"([^"]*)".*/\1/')
           echo "petpet_ver=${petpet_ver}" >> $GITHUB_OUTPUT
           
