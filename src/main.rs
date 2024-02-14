@@ -14,7 +14,7 @@ fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         .unwrap_or_else(|| process::exit(0));
 
     let output_file = FileDialog::new()
-        .add_filter("", &["gif", "apng"])
+        .add_filter("", &["gif", "png"])
         .save_file()
         .unwrap_or_else(|| process::exit(0));
 
@@ -29,7 +29,7 @@ fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     if output_file
         .file_name()
         .map(|file_name| file_name.to_string_lossy())
-        .is_some_and(|file_name| file_name.ends_with(".apng"))
+        .is_some_and(|file_name| file_name.ends_with(".png"))
     {
         let delay_num = 1;
         let delay_den = 50;

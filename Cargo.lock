@@ -391,7 +391,7 @@ dependencies = [
 
 [[package]]
 name = "petpet-gui"
-version = "1.1.0"
+version = "1.1.1"
 dependencies = [
  "petpet",
  "rfd",
